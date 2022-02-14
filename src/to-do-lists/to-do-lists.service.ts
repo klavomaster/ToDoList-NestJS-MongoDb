@@ -5,7 +5,7 @@ import { ToDoList } from './to-do-lists.entity';
 @Injectable()
 export class ToDoListsService {
     async getByUserId(userId: string): Promise<ToDoList[]> {
-        
+        // Быстрое решение для соединения с mongo db.
         const uri = 'mongodb+srv://klavomaster:bQnGVPXFvcYfUr2@sandbox.bzajs.mongodb.net/todo_list?retryWrites=true&w=majority';
         const client = new MongoClient(uri);
 
@@ -51,6 +51,7 @@ export class ToDoListsService {
                 .db('todo_list')
                 .collection('users')
                 .updateOne(
+                    // Хардкод Id пользователя - быстрое решение (без авторизации).
                     { '_id': new ObjectId('62082dddd9cb349ef3f76935')}, 
                     { "$push": {
                         "lists": {

@@ -5,6 +5,7 @@ import { Task } from './tasks.entity';
 @Injectable()
 export class TasksService {
     async getTasksByListId(listId: string): Promise<Task[]>{
+        // Быстрое решение для соединения с mongo db.
         const uri = 'mongodb+srv://klavomaster:bQnGVPXFvcYfUr2@sandbox.bzajs.mongodb.net/todo_list?retryWrites=true&w=majority';
         const client = new MongoClient(uri);
         try {
