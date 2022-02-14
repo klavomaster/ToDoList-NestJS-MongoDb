@@ -1,0 +1,37 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Task {
+  id: String!
+  name: String!
+  description: String!
+  order: Int!
+  status: Int!
+}
+
+type ToDoList {
+  id: String!
+  name: String!
+  order: Int!
+  status: Int!
+  tasks: [Task!]!
+}
+
+type User {
+  id: String!
+  name: String!
+  email: String!
+  password: String!
+  lists: [ToDoList!]!
+}
+
+type Query {
+  users: [User!]!
+  lists: [ToDoList!]!
+}
+
+type Mutation {
+  createList(name: String!): ToDoList!
+  createTask(listId: String!, name: String!, description: String!): Task!
+}
